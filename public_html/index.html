@@ -12,21 +12,18 @@
         <link rel="stylesheet" type="text/css" href="styles/navigation.css">
         <link rel="stylesheet" type="text/css" href="styles/note.css">
         <script src="scripts/note.js" async></script>
+        <script src="scripts/navigation.js" async></script>
     </head>
     <body id="container">
         <main id="notes">
-           <section class="note">
-                <h1 class="noteHeader"contenteditable="true">Title <img src="images/delete.png" alt="Close"></h1>
-                <textarea class="noteText" rows="6"></textarea>
-           </section> 
         </main>
         <nav id="navigation">
             <ul>
-                <li class="navOptions">
+                <li id="addNote" class="navOptions">
                     <img src="images/note.png" alt="">
                     <span class="optionName">Add note</span>
                 </li>
-                <li class="navOptions">
+                <li id="deleteAll" class="navOptions">
                     <img src="images/bin.png" alt="">
                     <span class="optionName">Delete all</span>
                 </li>

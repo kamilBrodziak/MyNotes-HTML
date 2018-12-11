@@ -1,4 +1,4 @@
-dragElement(document.getElementsByClassName("note")[0]);
+var zInd = 11;
 
 function dragElement(elmnt) {
     var startXcursor = 0, startYcursor = 0, pos3 = 0, pos4 = 0;
@@ -8,6 +8,7 @@ function dragElement(elmnt) {
     elmnt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
+        elmnt.style.zIndex = zInd++;
         e = e || window.event;
         if(isBorderClicked(e)){
             e.preventDefault();
@@ -53,7 +54,7 @@ function dragElement(elmnt) {
 
         var notes = document.getElementById("notes");
         if(notePosition.left <= hitboxLeft) {
-            elmnt.style.left = hitboxLeft + 1 + "px";
+            elmnt.style.left = hitboxLeft + 5 + "px";
             return true;
         } else if (notePosition.top <= 0) {
             elmnt.style.top = notePosition.top + 5 + "px";
@@ -68,4 +69,24 @@ function dragElement(elmnt) {
         return false;
     }
     
+}
+
+function checkCharcount(e)
+{   
+    var note = this.parentNode.parentNode;
+    note.style.minWidth = this.parentNode.offsetWidth + "px";
+    var max = parseInt(this.getAttribute("max"), 10);
+    if(e.which != 8 && this.innerHTML.length > max)
+    {
+       e.preventDefault();
+    }
+}
+
+function deleteNote() {
+    var notes = document.getElementById("notes");
+    notes.removeChild(this.parentNode.parentNode);
+}
+
+function resetZIndex() {
+    zInd = 10;
 }
