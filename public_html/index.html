@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>MyNotes </title>
+        <meta charset="UTF-8">
+        <meta name="description" content="Site for creating notes">
+        <meta name="keywords" content="notes, organize, work">
+        <meta name="author" content="Kamil Brodziak">
+        <meta name="viewport" content="width=device-width,height=device-height, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="styles/main.css">
+        <link rel="stylesheet" type="text/css" href="styles/navigation.css">
+        <link rel="stylesheet" type="text/css" href="styles/note.css">
+        <script src="scripts/note.js" async></script>
+    </head>
+    <body id="container">
+        <main id="notes">
+           <section class="note">
+                <h1 class="noteHeader"contenteditable="true">Title <img src="images/delete.png" alt="Close"></h1>
+                <textarea class="noteText" rows="6"></textarea>
+           </section> 
+        </main>
+        <nav id="navigation">
+            <ul>
+                <li class="navOptions">
+                    <img src="images/note.png" alt="">
+                    <span class="optionName">Add note</span>
+                </li>
+                <li class="navOptions">
+                    <img src="images/bin.png" alt="">
+                    <span class="optionName">Delete all</span>
+                </li>
+            </ul>
+            <div id="topCorner"></div>
+            <div id="bottomCorner"></div>
+        </nav>
+    </body>
+</html>

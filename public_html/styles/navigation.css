@@ -1,0 +1,72 @@
+
+nav {
+    margin-top: -30%;
+    height: 110%;
+    grid-area: navigation;
+    background-color: rgba(240, 255, 255, 0.8);
+    border-right: 10px groove rgb(233, 235, 234);
+    border-left: 10px groove rgb(233, 235, 234);
+    transform: rotateZ(15deg);
+    z-index: 100;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+main {
+    height: 100%;
+}
+
+.navOptions {
+    z-index: 101;
+    height: 20%;
+    width: 100%;
+    border-width: 10px 0px 10px 0px;
+    border-style: groove;
+    border-color: rgb(233, 235, 234);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.navOptions:first-child {
+    margin-top: 45%;
+}
+
+.navOptions:hover {
+    background-color: rgb(240, 255, 255);
+    cursor: pointer;
+    border-right: 20px groove rgb(233, 235, 234);
+    border-left: 20px groove rgb(233, 235, 234);
+    margin-left: -10px;
+}
+
+.navOptions img {
+    width: 80%;
+    height: 60%;
+}
+
+.optionName {
+    display: inline-block;
+    padding-top: 20%;
+    font-size: calc(1vh + 1vw);
+    font-weight: bolder;
+}
+
+#topCorner {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    top: 0%;
+    right: 0%;
+}
+
+#bottomCorner {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    bottom: 0%;
+    right: 0%;
+}
