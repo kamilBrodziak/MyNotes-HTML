@@ -60,10 +60,10 @@ function noteBuilder() {
     };
 
     this.loadStyle = function(style) {
-        this.note.style.top = style[0] + "px";
-        this.note.style.left = style[1] + "px";
-        this.note.style.width = style[2] + "px";
-        this.note.style.height = style[3] + "px";
+        this.note.style.top = style[0]/window.innerHeight * 100 + "%";
+        this.note.style.left = style[1]/window.innerWidth * 100 + "%";
+        this.note.style.width = style[2]/window.innerWidth * 100 + "%";
+        this.note.style.height = style[3]/window.innerHeight * 100 + "%";
     };
 
     this.get = function() {

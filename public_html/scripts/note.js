@@ -2,9 +2,6 @@ var zInd = 11;
 
 function dragElement(elmnt) {
     var startXcursor = 0, startYcursor = 0, pos3 = 0, pos4 = 0;
-    var cornerBottom = document.getElementById("bottomCorner").getBoundingClientRect();
-    var cornerTop = document.getElementById("topCorner").getBoundingClientRect();
-
     elmnt.onmousedown = dragMouseDown;
 
     function dragMouseDown(e) {
@@ -49,6 +46,9 @@ function dragElement(elmnt) {
 
     function isTouchingEdges() {
         var notePosition = elmnt.getBoundingClientRect();
+        var cornerBottom = document.getElementById("bottomCorner").getBoundingClientRect();
+        var cornerTop = document.getElementById("topCorner").getBoundingClientRect();
+
         var hitboxLeft = ((notePosition.top - cornerTop.top) * (cornerBottom.right - cornerTop.right))/
             (cornerBottom.bottom - cornerTop.top) + cornerTop.right;
 

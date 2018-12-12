@@ -1,33 +1,31 @@
 window.onload = loadNotesFromLS;
 
 function loadNoteToLS(note, isUpdate=false) {
-    if(!isUpdate) {
-    var noteObject = {
-        title: note.getElementsByClassName("headerText")[0].innerHTML,
-        text: note.getElementsByClassName("noteText")[0].innerHTML,
-        top: note.offsetTop,
-        left: note.offsetLeft,
-        width: note.offsetWidth,
-        height: note.offsetHeight,
-        hashCode: note.getAttribute("hashCode") + "",
-        pinned: note.getAttribute("pinned")
-    };
-    }
     var notes = JSON.parse(localStorage.getItem("notes"));
-    if(notes === null) {
-        notes = [];
-    }
-    if(isUpdate) {
-        updateNoteList(note, notes);
-    } else {
+    if(!isUpdate) {
+        if(notes === null) {
+            notes = [];
+        }
+        var noteObject = {
+            title: note.getElementsByClassName("headerText")[0].innerHTML,
+            text: note.getElementsByClassName("noteText")[0].innerHTML,
+            top: note.offsetTop,
+            left: note.offsetLeft,
+            width: note.offsetWidth,
+            height: note.offsetHeight,
+            hashCode: note.getAttribute("hashCode") + "",
+            pinned: note.getAttribute("pinned")
+        };
         notes.push(noteObject);
+    } else {
+        updateNoteList(note, notes);
     }
+
     localStorage.setItem("notes", JSON.stringify(notes));
 }
 
 function updateNoteList(note, notes) {
     for (var i = 0; i < notes.length; i++) {
-
         if (notes[i].hashCode === note.getAttribute("hashCode")) {
             notes[i].title = note.getElementsByClassName("headerText")[0].innerHTML;
             notes[i].text = note.getElementsByClassName("noteText")[0].value;
@@ -41,17 +39,15 @@ function updateNoteList(note, notes) {
     }
 }
 
-function loadNotesFromLS(e) {
-
+function loadNotesFromLS() {
     var notes = JSON.parse(localStorage.getItem("notes"));
-
     if(notes == null) {
         return false;
     }
 
     for(var i in notes) {
         var note = notes[i];
-        var noteDOM = loadNoteFromLS(note.title, note.text, note.hashCode, note.pinned,
+        loadNoteFromLS(note.title, note.text, note.hashCode, note.pinned,
             [note.top, note.left, note.width, note.height]);
     }
 }
@@ -66,7 +62,6 @@ function removeNoteFromLS(note) {
         }
     }
     localStorage.setItem("notes", JSON.stringify(notes));
-
 }
 
 function removeAllNotesFromLS() {

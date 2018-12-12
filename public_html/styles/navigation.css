@@ -48,6 +48,22 @@ main {
     height: 60%;
 }
 
+.navOptions a {
+    display: block;
+    text-decoration: none;
+    color: black;
+    font-size: 0.8vw;
+    width: 100%;
+    height: 100%;
+}
+
+.navOptions a span{
+    display: block;
+    font-weight: bolder;
+    width: 100%;
+    height: 100%;
+}
+
 .optionName {
     display: inline-block;
     padding-top: 20%;
