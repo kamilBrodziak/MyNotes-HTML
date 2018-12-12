@@ -83,8 +83,10 @@ function checkCharcount(e)
 }
 
 function deleteNote() {
+    var note = this.parentNode.parentNode;
     var notes = document.getElementById("notes");
-    notes.removeChild(this.parentNode.parentNode);
+    removeNoteFromLS(note);
+    notes.removeChild(note);
 }
 
 function resetZIndex() {
