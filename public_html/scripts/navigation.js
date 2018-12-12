@@ -19,6 +19,7 @@ function addNote(e, title="Title", text="Write Something", lsLoad=false, hashCod
 
     var note = document.createElement("SECTION");
     note.setAttribute("class", "note");
+    note.setAttribute("pinned", "false");
     note.appendChild(createHeader(title));
 
     note.appendChild(textarea);
@@ -27,6 +28,7 @@ function addNote(e, title="Title", text="Write Something", lsLoad=false, hashCod
     document.getElementById("notes").appendChild(note);
     note.addEventListener("keyup", changeLS);
     note.addEventListener("mouseup", changeLS);
+    note.addEventListener("dblclick", pinNote);
     if(lsLoad) {
         note.setAttribute("hashCode", hashCode);
         return note;
@@ -70,12 +72,34 @@ function createHeader(title) {
 
 function deleteAll() {
     var notes = document.getElementById("notes");
-    while (notes.hasChildNodes()) {   
-        notes.removeChild(notes.firstChild);
+    var pinned = document.querySelectorAll('[pinned=true]');
+    if (pinned.length !== 0) {
+        var notesToDelete = document.querySelectorAll("[pinned=false]");
+        for(var i = 0; i < notesToDelete.length; ++i) {
+            notes.removeChild(notesToDelete[i]);
+            removeNoteFromLS(notesToDelete[i]);
+        }
+    } else {
+        while(notes.hasChildNodes()) {
+            notes.removeChild(notes.firstChild);
+        }
+        removeAllNotesFromLS();
     }
-    removeAllNotesFromLS();
 }
 
 function changeLS() {
+    loadNoteToLS(this, true);
+}
+
+function pinNote() {
+    var imgHeader = this.getElementsByClassName("deleteNote")[0];
+    if(this.getAttribute("pinned") ==="true") {
+        this.setAttribute("pinned", "false");
+        imgHeader.addEventListener("click", deleteNote);
+
+    } else {
+        this.setAttribute("pinned", "true");
+        imgHeader.removeEventListener("click", deleteNote);
+    }
     loadNoteToLS(this, true);
 }

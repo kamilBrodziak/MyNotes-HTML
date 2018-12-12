@@ -9,7 +9,8 @@ function loadNoteToLS(note, isUpdate=false) {
         left: note.offsetLeft,
         width: note.offsetWidth,
         height: note.offsetHeight,
-        hashCode: note.getAttribute("hashCode") + ""
+        hashCode: note.getAttribute("hashCode") + "",
+        pinned: note.getAttribute("pinned")
     };
     }
     var notes = JSON.parse(localStorage.getItem("notes"));
@@ -34,6 +35,7 @@ function updateNoteList(note, notes) {
             notes[i].left = note.offsetLeft;
             notes[i].width = note.offsetWidth;
             notes[i].height = note.offsetHeight;
+            notes[i].pinned = note.getAttribute("pinned");
             return false;
         }
     }
@@ -54,6 +56,10 @@ function loadNotesFromLS(e) {
         noteDOM.style.left = note.left + "px";
         noteDOM.style.width = note.width + "px";
         noteDOM.style.height = note.height + "px";
+        noteDOM.setAttribute("pinned", note.pinned);
+        if(note.pinned === "true") {
+            noteDOM.getElementsByClassName("deleteNote")[0].removeEventListener("click", deleteNote);
+        }
     }
 }
 

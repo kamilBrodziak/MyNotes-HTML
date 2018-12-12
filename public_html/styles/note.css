@@ -17,6 +17,11 @@
     z-index: 10;
 }
 
+
+.note[pinned="true"] {
+    border: 20px groove rgb(135, 135, 135);
+}
+
 .noteHeader {
     cursor: text;
     width: 100%;
@@ -43,6 +48,11 @@
     height: auto;
     cursor: pointer;
 }
+
+.note[pinned="true"] .deleteNote {
+    cursor: not-allowed;
+}
+
 
 
 .noteText {
