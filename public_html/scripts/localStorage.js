@@ -51,15 +51,8 @@ function loadNotesFromLS(e) {
 
     for(var i in notes) {
         var note = notes[i];
-        var noteDOM = addNote(e, note.title, note.text, true, note.hashCode);
-        noteDOM.style.top = note.top + "px";
-        noteDOM.style.left = note.left + "px";
-        noteDOM.style.width = note.width + "px";
-        noteDOM.style.height = note.height + "px";
-        noteDOM.setAttribute("pinned", note.pinned);
-        if(note.pinned === "true") {
-            noteDOM.getElementsByClassName("deleteNote")[0].removeEventListener("click", deleteNote);
-        }
+        var noteDOM = loadNoteFromLS(note.title, note.text, note.hashCode, note.pinned,
+            [note.top, note.left, note.width, note.height]);
     }
 }
 

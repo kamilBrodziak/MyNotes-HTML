@@ -7,7 +7,7 @@ nav {
     border-right: 10px groove rgb(233, 235, 234);
     border-left: 10px groove rgb(233, 235, 234);
     transform: rotateZ(15deg);
-    z-index: 100;
+    z-index: 100000;
 }
 
 nav ul {

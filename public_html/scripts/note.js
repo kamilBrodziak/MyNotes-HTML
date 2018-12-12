@@ -92,3 +92,19 @@ function deleteNote() {
 function resetZIndex() {
     zInd = 10;
 }
+
+function pinNote() {
+    setPinned(this);
+    loadNoteToLS(this, true);
+}
+
+function setPinned(note) {
+    var imgHeader = note.getElementsByClassName("deleteNote")[0];
+    if(note.getAttribute("pinned") ==="false") {
+        note.setAttribute("pinned", "true");
+        imgHeader.removeEventListener("click", deleteNote);
+    } else {
+        note.setAttribute("pinned", "false");
+        imgHeader.addEventListener("click", deleteNote);
+    }
+}
